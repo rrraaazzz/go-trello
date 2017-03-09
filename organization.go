@@ -22,16 +22,18 @@ import (
 
 type Organization struct {
 	client      *Client
-	Id          string   `json:"id"`
-	Name        string   `json:"name"`
-	DisplayName string   `json:"displayName"`
-	Desc        string   `json:"desc"`
-	DescData    string   `json:"descData"`
-	Url         string   `json:"url"`
-	Website     string   `json:"website"`
-	LogoHash    string   `json:"logoHash"`
-	Products    []string `json:"products"`
-	PowerUps    []string `json:"powerUps"`
+	Id          string `json:"id"`
+	Name        string `json:"name"`
+	DisplayName string `json:"displayName"`
+	Desc        string `json:"desc"`
+	DescData    struct {
+		Emoji struct{} `json:"emoji"`
+	} `json:"descData"`
+	Url      string   `json:"url"`
+	Website  string   `json:"website"`
+	LogoHash string   `json:"logoHash"`
+	Products []string `json:"products"`
+	PowerUps []string `json:"powerUps"`
 }
 
 func (c *Client) Organization(orgId string) (organization *Organization, err error) {
